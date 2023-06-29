@@ -15,7 +15,7 @@
       Yang belum selesai :
       <span class="text-red-500">{{ numberOfUncompletedTasks }}</span>
     </h3>
-    <table class="w-full text-sm text-left">
+    <table class="w-full text-sm text-left mt-3">
       <thead class="uppercase bg-gray-700 text-gray-400 text-center text-base">
         <tr>
           <th scope="col" class="w-8 px-6 py-3"></th>
@@ -27,11 +27,20 @@
         </tr>
       </thead>
       <tbody class="text-base">
+        <tr v-if="tasks.length === 0">
+          <td
+            colspan="6"
+            class="border-b bg-gray-800 text-white text-center py-3"
+          >
+            Tidak ada data tugas
+          </td>
+        </tr>
         <tr
           class="border-b bg-gray-800 text-white"
           v-for="(task, index) in tasks"
           :key="index"
           :class="{ 'line-through': task.status }"
+          v-else
         >
           <td
             scope="row"
